@@ -99,15 +99,6 @@
         # Your Alacritty settings here
       };
     };
-
-    programs.plasma = {
-      enable = true;
-      workspace = {
-        theme = "breeze-dark";
-        colorScheme = "BreezeDark";
-      };
-    };
-
   };
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
@@ -165,8 +156,6 @@
   allowedTCPPortRanges = [{ from = 1714; to = 1764; }];
   allowedUDPPortRanges = [{ from = 1714; to = 1764; }];
 };
-  # networking.firewall.allowedTCPPorts = [ ... ];
-  # networking.firewall.allowedUDPPorts = [ ... ];
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
 
