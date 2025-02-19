@@ -5,11 +5,11 @@
 { config, pkgs, ... }:
 
 {
-  imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-      <home-manager/nixos>
-    ];
+  imports = [
+    # Include the results of the hardware scan.
+    ./hardware-configuration.nix
+    <home-manager/nixos>
+  ];
 
   # Bootloader.
   boot.loader.grub.enable = true;
@@ -17,12 +17,6 @@
   boot.loader.grub.useOSProber = true;
 
   networking.hostName = "bishop"; # Define your hostname.
-  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-
-  # Configure network proxy if necessary
-  # networking.proxy.default = "http://user:password@proxy:port/";
-  # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
-
   # Enable networking
   networking.networkmanager.enable = true;
 
@@ -31,7 +25,6 @@
 
   # Select internationalisation properties.
   i18n.defaultLocale = "en_US.UTF-8";
-
   i18n.extraLocaleSettings = {
     LC_ADDRESS = "en_US.UTF-8";
     LC_IDENTIFICATION = "en_US.UTF-8";
@@ -44,12 +37,10 @@
     LC_TIME = "en_US.UTF-8";
   };
 
-
   # Enable the KDE Plasma Desktop Environment.
   services.displayManager.sddm.enable = true;
   services.displayManager.sddm.wayland.enable = true;
   services.desktopManager.plasma6.enable = true;
-
 
   # Configure keymap in X11
   services.xserver.xkb = {
@@ -79,48 +70,42 @@
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
 
-    # Enable Home Manager
+  # Enable Home Manager
   home-manager.useGlobalPkgs = true;
   home-manager.useUserPackages = true;
 
   # Home Manager configuration
-  home-manager.users.b = { pkgs, ... }: {
-    home.stateVersion = "24.11";
+  home-manager.users.b =
+    { pkgs, ... }:
+    {
+      home.stateVersion = "24.11";
 
-    programs.git = {
-      enable = true;
-      userName = "Bryant Deters";
-      userEmail = "bryantdeters@gmail.com";
-    };
-
-    programs.alacritty = {
-      enable = true;
-      settings = {
-        # Your Alacritty settings here
+      programs.git = {
+        enable = true;
+        userName = "Bryant Deters";
+        userEmail = "bryantdeters@gmail.com";
       };
+
+      shell = pkgs.zsh;
     };
-  };
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.b = {
     isNormalUser = true;
     description = "bryant";
-    extraGroups = [ "networkmanager" "wheel" ];
-    packages = with pkgs; [
-      kdePackages.kate
-      kdePackages.kdeconnect-kde
+    extraGroups = [
+      "networkmanager"
+      "wheel"
     ];
+    packages = with pkgs; [
+      kdePackages.kdeconnect-kde # phone integration
+      kdePackages.kdf # storage info
+    ];
+    shell = pkgs.zsh;
   };
 
   # Install firefox.
   programs.firefox.enable = true;
-
-  # LD Fix
-  programs.nix-ld.enable = true;
-  programs.nix-ld.libraries = with pkgs; [
-    # add any missing dynamic libraries for unpackaged programs
-    # here, NOT in environment.systemPackagesW
-  ];
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
@@ -128,15 +113,59 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-    nix-ld
+    nix-ld # LD Fix
+    nixd # nix language server
+    nixfmt-rfc-style # official nix formatter
     git
     vim
     alacritty
     discord
     zed-editor
+    zsh
   ];
 
+  # Terminal setup
+  programs.zsh = {
+    enable = true;
+    ohMyZsh = {
+      enable = true;
+      theme = "robbyrussell";
+      plugins = [
+        "git"
+        "sudo"
+      ];
+    };
+  };
 
+  # programs.zed-editor = {
+  #   enabled = true;
+  #   extensions = [
+  #     "nix"
+  #     "toml"
+  #     "rs"
+  #     "sh"
+  #   ];
+  #   userSettings = {
+  #     terminal = {
+  #       dock = "bottom";
+  #       env = {
+  #         TERM = "alacritty";
+  #       };
+  #       working_directory = "current_project_directory";
+  #     };
+  #     # lsp = {
+  #     # rust-analyzer = {
+  #     # };
+  #     # };
+  #   };
+  # };
+
+  # LD Fix
+  programs.nix-ld.enable = true;
+  programs.nix-ld.libraries = with pkgs; [
+    # add any missing dynamic libraries for unpackaged programs
+    # here, NOT in environment.systemPackagesW
+  ];
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
@@ -153,9 +182,20 @@
 
   # Open ports in the firewall.
   networking.firewall = {
-  allowedTCPPortRanges = [{ from = 1714; to = 1764; }];
-  allowedUDPPortRanges = [{ from = 1714; to = 1764; }];
-};
+    # ports for KDE Connect
+    allowedTCPPortRanges = [
+      {
+        from = 1714;
+        to = 1764;
+      }
+    ];
+    allowedUDPPortRanges = [
+      {
+        from = 1714;
+        to = 1764;
+      }
+    ];
+  };
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
 
