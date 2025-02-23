@@ -42,7 +42,7 @@
     device = "none";
     fsType = "tmpfs";
     options = [
-      "size=3G"
+      "size=12G"
       "mode=777"
     ];
   };
@@ -81,8 +81,8 @@
   # services.xserver.libinput.enable = true;
 
   # Enable Home Manager
-  # home-manager.useGlobalPkgs = true;
-  # home-manager.useUserPackages = true;
+  home-manager.useGlobalPkgs = true;
+  home-manager.useUserPackages = true;
 
   # Home Manager configuration
   home-manager.users.b =
@@ -195,35 +195,6 @@
       ];
     };
   };
-
-  # programs.zed-editor = {
-  # enabled = true;
-  # extensions = [
-  # "nix"
-  # "toml"
-  # "rs"
-  # "sh"
-  # ];
-  # env = {
-  # TERM = "alacritty";
-  # };
-  # terminal = {
-  # shell = "system";
-  # };
-  #   userSettings = {
-  #     terminal = {
-  #       dock = "bottom";
-  #       env = {
-  #         TERM = "alacritty";
-  #       };
-  #       working_directory = "current_project_directory";
-  #     };
-  #     # lsp = {
-  #     # rust-analyzer = {
-  #     # };
-  #     # };
-  #   };
-  # };
 
   # LD Fix
   programs.nix-ld.enable = true;
