@@ -82,6 +82,10 @@
 
       programs.git = {
         enable = true;
+        lfs.enable = true;
+        extraConfig = {
+          push = { autoSetupRemote = true; };
+        };
         userName = "Bryant Deters";
         userEmail = "bryantdeters@gmail.com";
       };
@@ -105,7 +109,37 @@
   };
 
   # Install firefox.
-  programs.firefox.enable = true;
+  programs.firefox = {
+    enable = true;
+    # Check about:policies#documentation for options.
+    policies = {
+      DisableTelemetry = true;
+      DisableFirefoxStudies = true;
+      EnableTrackingProtection = {
+        Value= true;
+        Locked = true;
+        Cryptomining = true;
+        Fingerprinting = true;
+      };
+      DisablePocket = true;
+      DisableFirefoxAccounts = true;
+      DisableAccounts = true;
+      DisableFirefoxScreenshots = true;
+      OverrideFirstRunPage = "";
+      OverridePostUpdatePage = "";
+      DontCheckDefaultBrowser = true;
+      DisplayBookmarksToolbar = "never"; # alternatives: "always" or "newtab"
+      DisplayMenuBar = "default-off"; # alternatives: "always", "never" or "default-on"
+      SearchBar = "unified"; # alternative: "separate"
+    };
+
+    #about:config stuff
+    Preferences = {
+      "browser.cache.disk.enable" = false;
+      "browser.cache.memory.enable" = true;
+      "extensions.pocket.enabled" = false;
+    };
+  };
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
@@ -116,10 +150,8 @@
     nix-ld # LD Fix
     nixd # nix language server
     nixfmt-rfc-style # official nix formatter
-    git
-    vim
     alacritty
-    discord
+    vesktop
     zed-editor
     zsh
   ];
@@ -137,14 +169,20 @@
     };
   };
 
-  # programs.zed-editor = {
-  #   enabled = true;
-  #   extensions = [
-  #     "nix"
-  #     "toml"
-  #     "rs"
-  #     "sh"
-  #   ];
+  programs.zed-editor = {
+    enabled = true;
+    extensions = [
+      "nix"
+      "toml"
+      "rs"
+      "sh"
+    ];
+    env = {
+      TERM = "alacritty";
+    };
+    terminal = {
+      shell = "system";
+    };
   #   userSettings = {
   #     terminal = {
   #       dock = "bottom";
@@ -158,13 +196,13 @@
   #     # };
   #     # };
   #   };
-  # };
+  };
 
   # LD Fix
   programs.nix-ld.enable = true;
   programs.nix-ld.libraries = with pkgs; [
     # add any missing dynamic libraries for unpackaged programs
-    # here, NOT in environment.systemPackagesW
+    # here, NOT in environment.systemPackages
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
