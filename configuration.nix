@@ -108,21 +108,16 @@
     shell = pkgs.zsh;
   };
 
-  # Install firefox.
+  # search.nixos.org/options to see what can be configured
   programs.firefox = {
     enable = true;
-
-    profiles.default = {
-      id = 0;
-      name = "default";
-      isDefault = true;
-      settings = {
-        #about:config stuff
-        "browser.cache.disk.enable" = false;
-        "browser.cache.memory.enable" = true;
-        "extensions.pocket.enabled" = false;
-      };
+    preferences = {
+      #about:config stuff
+      "browser.cache.disk.enable" = false;
+      "browser.cache.memory.enable" = true;
+      "extensions.pocket.enabled" = false;
     };
+
     # Check about:policies#documentation for options.
     policies = {
       DisableTelemetry = true;
