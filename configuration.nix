@@ -8,7 +8,7 @@
   imports = [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
-    <home-manager/nixos>
+    # <home-manager/nixos>
     # ./WIP/nixos-modules/tmpfs-downloads.nix
   ];
 
@@ -76,25 +76,24 @@
   home-manager.useUserPackages = true;
 
   # Home Manager configuration
-  home-manager.users.b =
-    { pkgs, ... }:
-    {
-      home.stateVersion = "24.11";
+  # home-manager.users.b =
+  #   { pkgs, ... }:
+  #   {
+  #     home.stateVersion = "24.11";
 
-      programs.git = {
-        enable = true;
-        lfs.enable = true;
-        extraConfig = {
-          push = {
-            autoSetupRemote = true;
-          };
-        };
-        userName = "Bryant Deters";
-        userEmail = "bryantdeters@gmail.com";
-      };
+  #     programs.git = {
+  #       enable = true;
+  #       lfs.enable = true;
+  #       extraConfig = {
+  #         push = {
+  #           autoSetupRemote = true;
+  #         };
+  #       };
+  #       userName = "Bryant Deters";
+  #       userEmail = "bryantdeters@gmail.com";
+  #     };
 
-      # shell = pkgs.zsh;
-    };
+  #   };
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.b = {
@@ -111,6 +110,17 @@
   };
   users.defaultUserShell = pkgs.zsh;
 
+  programs.git = {
+    enable = true;
+    lfs.enable = true;
+    extraConfig = {
+      push = {
+        autoSetupRemote = true;
+      };
+    };
+    userName = "brunt";
+    userEmail = "bryantdeters@gmail.com";
+  };
   # search.nixos.org/options to see what can be configured
   programs.firefox = {
     enable = true;
