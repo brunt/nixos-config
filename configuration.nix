@@ -9,7 +9,7 @@
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
     <home-manager/nixos>
-    ./WIP/nixos-modules/tmpfs-downloads.nix
+    # ./WIP/nixos-modules/tmpfs-downloads.nix
   ];
 
   # Bootloader.
@@ -144,11 +144,11 @@
     };
   };
 
-  services.tmpfsDownloads = {
-    enable = true;
-    username = "b";
-    size = "3G"; # Optional: Override the default size
-  };
+  # services.tmpfsDownloads = {
+  #   enable = true;
+  #   username = "b";
+  #   size = "3G"; # Optional: Override the default size
+  # };
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
@@ -163,6 +163,14 @@
     vesktop
     zed-editor
     zsh
+
+    (writeShellScriptBin "rebuild.sh" ''
+      nixos-rebuild  switch
+    '')
+
+    (writeShellScriptBin "test.sh" ''
+      nixos-rebuild test
+    '')
   ];
 
   # Terminal setup
