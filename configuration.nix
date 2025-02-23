@@ -111,6 +111,18 @@
   # Install firefox.
   programs.firefox = {
     enable = true;
+
+    profiles.default = {
+      id = 0;
+      name = "default";
+      isDefault = true;
+      settings = {
+        #about:config stuff
+        "browser.cache.disk.enable" = false;
+        "browser.cache.memory.enable" = true;
+        "extensions.pocket.enabled" = false;
+      };
+    };
     # Check about:policies#documentation for options.
     policies = {
       DisableTelemetry = true;
@@ -133,12 +145,6 @@
       SearchBar = "unified"; # alternative: "separate"
     };
 
-    #about:config stuff
-    Preferences = {
-      "browser.cache.disk.enable" = false;
-      "browser.cache.memory.enable" = true;
-      "extensions.pocket.enabled" = false;
-    };
   };
 
   # Allow unfree packages
