@@ -108,8 +108,8 @@
       kdePackages.kdeconnect-kde # phone integration
       kdePackages.kdf # storage info
     ];
-    shell = pkgs.zsh;
   };
+  users.defaultUserShell = pkgs.zsh;
 
   # search.nixos.org/options to see what can be configured
   programs.firefox = {
@@ -165,17 +165,20 @@
     zsh
 
     (writeShellScriptBin "rebuild.sh" ''
-      nixos-rebuild  switch
-    '')
-
-    (writeShellScriptBin "test.sh" ''
-      nixos-rebuild test
+      git diff -U0 '*.nix'
+      nixos-rebuild switch
     '')
   ];
 
   # Terminal setup
   programs.zsh = {
     enable = true;
+    enableCompletion = true;
+
+    shellAliases = {
+      switch = "sudo nixos-rebuild switch"; # todo: larger script
+      rollback = "sudo nixos-rebuild --rollback";
+    };
     ohMyZsh = {
       enable = true;
       theme = "robbyrussell";
@@ -251,8 +254,6 @@
       }
     ];
   };
-  # Or disable the firewall altogether.
-  # networking.firewall.enable = false;
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
