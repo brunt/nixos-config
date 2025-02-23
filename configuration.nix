@@ -170,20 +170,20 @@
     };
   };
 
-  programs.zed-editor = {
-    enabled = true;
-    extensions = [
-      "nix"
-      "toml"
-      "rs"
-      "sh"
-    ];
-    env = {
-      TERM = "alacritty";
-    };
-    terminal = {
-      shell = "system";
-    };
+  # programs.zed-editor = {
+    # enabled = true;
+    # extensions = [
+      # "nix"
+      # "toml"
+      # "rs"
+      # "sh"
+    # ];
+    # env = {
+      # TERM = "alacritty";
+    # };
+    # terminal = {
+      # shell = "system";
+    # };
   #   userSettings = {
   #     terminal = {
   #       dock = "bottom";
@@ -197,7 +197,7 @@
   #     # };
   #     # };
   #   };
-  };
+  # };
 
   # LD Fix
   programs.nix-ld.enable = true;
