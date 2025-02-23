@@ -9,7 +9,7 @@
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
     <home-manager/nixos>
-    ./WIP/hosts/bishop/tmpfs-downloads.nix
+    ./WIP/nixos-modules/tmpfs-downloads.nix
   ];
 
   # Bootloader.
