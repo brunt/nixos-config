@@ -9,6 +9,7 @@
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
     <home-manager/nixos>
+    ./WIP/hosts/bishop/tmpfs-downloads.nix
   ];
 
   # Bootloader.
@@ -84,7 +85,9 @@
         enable = true;
         lfs.enable = true;
         extraConfig = {
-          push = { autoSetupRemote = true; };
+          push = {
+            autoSetupRemote = true;
+          };
         };
         userName = "Bryant Deters";
         userEmail = "bryantdeters@gmail.com";
@@ -123,7 +126,7 @@
       DisableTelemetry = true;
       DisableFirefoxStudies = true;
       EnableTrackingProtection = {
-        Value= true;
+        Value = true;
         Locked = true;
         Cryptomining = true;
         Fingerprinting = true;
@@ -139,7 +142,12 @@
       DisplayMenuBar = "default-off"; # alternatives: "always", "never" or "default-on"
       SearchBar = "unified"; # alternative: "separate"
     };
+  };
 
+  services.tmpfsDownloads = {
+    enable = true;
+    username = "b";
+    size = "3G"; # Optional: Override the default size
   };
 
   # Allow unfree packages
@@ -171,19 +179,19 @@
   };
 
   # programs.zed-editor = {
-    # enabled = true;
-    # extensions = [
-      # "nix"
-      # "toml"
-      # "rs"
-      # "sh"
-    # ];
-    # env = {
-      # TERM = "alacritty";
-    # };
-    # terminal = {
-      # shell = "system";
-    # };
+  # enabled = true;
+  # extensions = [
+  # "nix"
+  # "toml"
+  # "rs"
+  # "sh"
+  # ];
+  # env = {
+  # TERM = "alacritty";
+  # };
+  # terminal = {
+  # shell = "system";
+  # };
   #   userSettings = {
   #     terminal = {
   #       dock = "bottom";
