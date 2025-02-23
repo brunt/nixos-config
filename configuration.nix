@@ -168,6 +168,8 @@
     nixfmt-rfc-style # official nix formatter
     alacritty
     vesktop
+    keepass
+    keepassxc
     zed-editor
     zsh
 
