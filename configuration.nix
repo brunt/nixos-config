@@ -8,8 +8,6 @@
   imports = [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
-    # <home-manager/nixos>
-    # ./WIP/nixos-modules/tmpfs-downloads.nix
   ];
 
   # Bootloader.
@@ -36,6 +34,16 @@
     LC_PAPER = "en_US.UTF-8";
     LC_TELEPHONE = "en_US.UTF-8";
     LC_TIME = "en_US.UTF-8";
+  };
+
+  #experimenting with filesystem
+  fileSystems."/home/b/Downloads" = {
+    device = "none";
+    fsType = "tmpfs";
+    options = [
+      "size=2G"
+      "mode=777"
+    ];
   };
 
   # Enable the KDE Plasma Desktop Environment.
@@ -72,8 +80,8 @@
   # services.xserver.libinput.enable = true;
 
   # Enable Home Manager
-  home-manager.useGlobalPkgs = true;
-  home-manager.useUserPackages = true;
+  # home-manager.useGlobalPkgs = true;
+  # home-manager.useUserPackages = true;
 
   # Home Manager configuration
   # home-manager.users.b =
