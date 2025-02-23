@@ -90,7 +90,7 @@
         userEmail = "bryantdeters@gmail.com";
       };
 
-      shell = pkgs.zsh;
+      # shell = pkgs.zsh;
     };
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
