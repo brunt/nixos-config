@@ -37,7 +37,6 @@
     LC_TIME = "en_US.UTF-8";
   };
 
-  #experimenting with filesystem
   fileSystems."/home/b/Downloads" = {
     device = "none";
     fsType = "tmpfs";
@@ -151,12 +150,6 @@
     };
   };
 
-  # services.tmpfsDownloads = {
-  #   enable = true;
-  #   username = "b";
-  #   size = "3G"; # Optional: Override the default size
-  # };
-
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
@@ -167,16 +160,11 @@
     nixd # nix language server
     nixfmt-rfc-style # official nix formatter
     alacritty
-    vesktop
-    keepass
+    vesktop # discord clone
     keepassxc
+    rustup
     zed-editor
     zsh
-
-    (writeShellScriptBin "rebuild.sh" ''
-      git diff -U0 '*.nix'
-      nixos-rebuild switch
-    '')
   ];
 
   # Terminal setup
