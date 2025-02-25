@@ -162,6 +162,8 @@
     alacritty
     vesktop # discord clone
     keepassxc
+    libappimage # functionality for appimages
+    polychromatic # razer lights configuration
     rustup
     zed-editor
     zsh
