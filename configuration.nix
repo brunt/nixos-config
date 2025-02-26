@@ -46,6 +46,16 @@
     ];
   };
 
+  #turtle-wow
+  fileSystems."/home/b/Games/turtle-wow/WDB" = {
+    device = "none";
+    fsType = "tmpfs";
+    options = [
+      "size=4G"
+      "mode=777"
+    ];
+  };
+
   # Enable the KDE Plasma Desktop Environment.
   services.displayManager.sddm.enable = true;
   services.displayManager.sddm.wayland.enable = true;
@@ -75,6 +85,8 @@
     # no need to redefine it in your config for now)
     #media-session.enable = true;
   };
+
+  hardware.openrazer.enable = true;
 
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
@@ -109,6 +121,7 @@
     extraGroups = [
       "networkmanager"
       "wheel"
+      "openrazer"
     ];
     packages = with pkgs; [
       kdePackages.kdeconnect-kde # phone integration
@@ -168,6 +181,7 @@
     zed-editor
     zsh
     gamescope
+    openrazer-daemon # keyboard lights
   ];
 
   # Terminal setup
