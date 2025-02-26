@@ -126,6 +126,7 @@
     packages = with pkgs; [
       kdePackages.kdeconnect-kde # phone integration
       kdePackages.kdf # storage info
+      kdePackages.kcalc
     ];
   };
   users.defaultUserShell = pkgs.zsh;
@@ -135,6 +136,7 @@
     enable = true;
     preferences = {
       #about:config stuff
+      "browser.cache.disk_cache_ssl" = false;
       "browser.cache.disk.enable" = false;
       "browser.cache.memory.enable" = true;
       "extensions.pocket.enabled" = false;
@@ -161,6 +163,36 @@
       DisplayMenuBar = "default-off"; # alternatives: "always", "never" or "default-on"
       SearchBar = "unified"; # alternative: "separate"
     };
+
+    # ---- EXTENSIONS ----
+    # Check about:support for extension/add-on ID strings.
+    # Valid strings for installation_mode are "allowed", "blocked",
+    # "force_installed" and "normal_installed".
+    ExtensionSettings = {
+      "*".installation_mode = "blocked"; # blocks all addons except the ones specified below
+      # uBlock Origin:
+      "uBlock0@raymondhill.net" = {
+        install_url = "https://addons.mozilla.org/firefox/downloads/latest/ublock-origin/latest.xpi";
+        installation_mode = "force_installed";
+      };
+      # Privacy Badger:
+      "jid1-MnnxcxisBPnSXQ@jetpack" = {
+        install_url = "https://addons.mozilla.org/firefox/downloads/latest/privacy-badger17/latest.xpi";
+        installation_mode = "force_installed";
+      };
+
+      # VivalidFox:
+      "@vivaldi-fox" = {
+        install_url = "https://addons.mozilla.org/firefox/downloads/file/4023673/vivaldifox-3.6.xpi";
+        installation_mode = "force_installed";
+      };
+      # Facebook Container:
+      "@contain-facebook" = {
+        install_url = "https://addons.mozilla.org/firefox/downloads/file/4141092/facebook_container-2.3.11.xpi";
+        installation_mode = "force_installed";
+      };
+    };
+
   };
 
   # Allow unfree packages
