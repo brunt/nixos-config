@@ -210,7 +210,7 @@
     libappimage # functionality for appimages
     polychromatic # razer lights configuration
     rustup
-    unstable.zed-editor
+    zed-editor # todo: use unstable
     zsh
     gamescope
     openrazer-daemon # keyboard lights
