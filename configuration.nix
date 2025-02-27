@@ -127,6 +127,7 @@
       kdePackages.kdeconnect-kde # phone integration
       kdePackages.kdf # storage info
       kdePackages.kcalc
+      kdePackages.ktorrent
     ];
   };
   users.defaultUserShell = pkgs.zsh;
@@ -222,7 +223,7 @@
     enableCompletion = true;
 
     shellAliases = {
-      switch = "sudo nixos-rebuild switch"; # todo: larger script
+      switch = "./users/b/nixos-config/rebuild.sh"; # todo: larger script
       rollback = "sudo nixos-rebuild --rollback";
     };
     ohMyZsh = {
