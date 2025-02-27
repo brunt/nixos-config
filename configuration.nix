@@ -153,6 +153,17 @@
       kdePackages.kdf # storage info
       kdePackages.kcalc
       kdePackages.ktorrent
+      (writeShellScriptBin "rebuild" ''
+        set -e
+        pushd ~/nixos-config
+        git --no-pager diff -U0 '*.nix'
+        sudo nixos-rebuild switch
+        git add configuration.nix
+        current=$(nixos-rebuild list-generations | grep current)
+        git commit -am "$current"
+        popd
+        echo "done"
+      '')
     ];
   };
   users.defaultUserShell = pkgs.zsh;
@@ -249,7 +260,6 @@
     enableCompletion = true;
 
     shellAliases = {
-      switch = "./users/b/nixos-config/rebuild.sh"; # todo: larger script
       rollback = "sudo nixos-rebuild --rollback";
     };
     ohMyZsh = {
