@@ -229,7 +229,6 @@
         };
       };
     };
-
   };
 
   # Allow unfree packages
