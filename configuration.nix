@@ -6,7 +6,6 @@
 
 {
   imports = [
-    # Include the results of the hardware scan.
     ./hardware-configuration.nix
     <home-manager/nixos>
   ];
@@ -46,7 +45,6 @@
     ];
   };
 
-  #turtle-wow
   fileSystems."/home/b/Games/turtle-wow/WDB" = {
     device = "none";
     fsType = "tmpfs";
@@ -168,7 +166,6 @@
   };
   users.defaultUserShell = pkgs.zsh;
 
-  # search.nixos.org/options to see what can be configured
   programs.firefox = {
     enable = true;
     preferences = {
@@ -278,7 +275,7 @@
     # here, NOT in environment.systemPackages
   ];
 
-  ### STEAM
+  # Steam
   programs.steam = {
     enable = true;
     remotePlay.openFirewall = true;
@@ -347,6 +344,12 @@
       }
     ];
   };
+
+  # Garbage collection of nix store
+  nix.gc.automatic = true;
+  nix.gc.dates = "weekly";
+  # De-duplicate nix store
+  nix.settings.auto-optimise-store = true;
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
