@@ -112,6 +112,31 @@
         userName = "Bryant Deters";
         userEmail = "bryantdeters@gmail.com";
       };
+
+      programs.starship = {
+        enable = true;
+        enableZshIntegration = true;
+        settings = {
+          add_newline = true;
+          # hostname = {
+          #   ssh_only = false;
+          #   format = "[$ssh_symbol$hostname]($style) ";
+          #   style = "bold purple";
+          # };
+          character = {
+            success_symbol = "[➜](bold green)";
+            error_symbol = "[✗](bold red)";
+          };
+          username = {
+            show_always = true;
+            format = "[$user]($style)@";
+          };
+          directory = {
+            read_only = " 🔒";
+            truncation_symbol = "…/";
+          };
+        };
+      };
     };
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
@@ -205,12 +230,13 @@
     nix-ld # LD Fix
     nixd # nix language server
     nixfmt-rfc-style # official nix formatter
-    alacritty
+    alacritty # terminal emulator
     vesktop # discord clone
-    keepassxc
+    keepassxc # password manager
     libappimage # functionality for appimages
     polychromatic # razer lights configuration
-    rustup
+    rustup # rust lang
+    starship # terminal prompts
     zed-editor # todo: use unstable
     zsh
     gamescope
