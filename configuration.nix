@@ -6,6 +6,8 @@
 # sudo nix-channel --add https://github.com/nix-community/home-manager/archive/master.tar.gz home-manager
 # sudo nix-channel --add https://nixos.org/channels/nixos-unstable nixos-unstable
 # sudo nix-channel --update
+# copy turtle wow folder to ~/Games
+# adjust boot loader section as necessary
 # sudo nixos-rebuild switch
 
 { config, pkgs, ... }:
