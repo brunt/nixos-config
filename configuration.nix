@@ -1,9 +1,21 @@
-# Edit this configuration file to define what should be installed on
-# your system.  Help is available in the configuration.nix(5) man page
-# and in the NixOS manual (accessible by running ‘nixos-help’).
+# setup steps:
+# cd ~
+# git clone git@github.com:brunt/nixos-config.git
+# sudo rm /etc/nixos/configuration.nix
+# ln -s /home/b/nixos-config/configuration.nix /etc/nixos/configuration.nix
+# sudo nix-channel --add https://github.com/nix-community/home-manager/archive/master.tar.gz home-manager
+# sudo nix-channel --add https://nixos.org/channels/nixos-unstable nixos-unstable
+# sudo nix-channel --update
+# sudo nixos-rebuild switch
 
 { config, pkgs, ... }:
-
+let
+  unstable = import <nixos-unstable> {
+    config = {
+      allowUnfree = true;
+    };
+  };
+in
 {
   imports = [
     ./hardware-configuration.nix
@@ -244,7 +256,7 @@
     polychromatic # razer lights configuration
     rustup # rust lang
     starship # terminal prompts
-    zed-editor # todo: use unstable
+    unstable.zed-editor # editor
     zsh
     gamescope
     openrazer-daemon # keyboard lights
