@@ -10,6 +10,10 @@
 # adjust boot loader section as necessary
 # sudo nixos-rebuild switch
 
+# notes:
+# librewolf alternative browser
+# https://www.reddit.com/r/NixOS/comments/1j0sm8q/thanks_to_nixos_and_homemanager_this_diff_was/
+
 { config, pkgs, ... }:
 let
   unstable = import <nixos-unstable> {
