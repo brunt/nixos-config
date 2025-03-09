@@ -257,6 +257,7 @@ in
     nixfmt-rfc-style # official nix formatter
     alacritty # terminal emulator
     vesktop # discord clone
+    vlc
     keepassxc # password manager
     libappimage # functionality for appimages
     polychromatic # razer lights configuration
