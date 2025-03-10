@@ -267,6 +267,7 @@ in
     zsh
     gamescope
     openrazer-daemon # keyboard lights
+    obsidian #notes
   ];
 
   # Terminal setup
@@ -365,10 +366,20 @@ in
   };
 
   # Garbage collection of nix store
-  nix.gc.automatic = true;
-  nix.gc.dates = "weekly";
+  nix.gc = {
+    automatic = true;
+    dates = "weekly;
+  }
   # De-duplicate nix store
   nix.settings.auto-optimise-store = true;
+
+  # Auto updates
+  system.autoUpgrade = {
+    enable = true;
+    allowReboot = false;
+    dates = "weekly";
+    randomizedDelaySec = "45min";
+  };
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
