@@ -368,8 +368,8 @@ in
   # Garbage collection of nix store
   nix.gc = {
     automatic = true;
-    dates = "weekly;
-  }
+    dates = "weekly";
+  };
   # De-duplicate nix store
   nix.settings.auto-optimise-store = true;
 
