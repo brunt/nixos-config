@@ -1,18 +1,6 @@
-# setup steps:
-# cd ~
-# git clone git@github.com:brunt/nixos-config.git
-# sudo rm /etc/nixos/configuration.nix
-# ln -s /home/b/nixos-config/configuration.nix /etc/nixos/configuration.nix
-# sudo nix-channel --add https://github.com/nix-community/home-manager/archive/master.tar.gz home-manager
-# sudo nix-channel --add https://nixos.org/channels/nixos-unstable nixos-unstable
-# sudo nix-channel --update
-# copy turtle wow folder to ~/Games
-# adjust boot loader section as necessary
-# sudo nixos-rebuild switch
-
-# notes:
-# librewolf alternative browser
-# https://www.reddit.com/r/NixOS/comments/1j0sm8q/thanks_to_nixos_and_homemanager_this_diff_was/
+# Edit this configuration file to define what should be installed on
+# your system.  Help is available in the configuration.nix(5) man page
+# and in the NixOS manual (accessible by running ‘nixos-help’).
 
 { config, pkgs, ... }:
 let
@@ -23,15 +11,15 @@ let
   };
 in
 {
-  imports = [
-    ./hardware-configuration.nix
-    <home-manager/nixos>
-  ];
+  imports =
+    [
+      <home-manager/nixos>
+      /etc/nixos/hardware-configuration.nix
+    ];
 
   # Bootloader.
-  boot.loader.grub.enable = true;
-  boot.loader.grub.device = "/dev/sdd";
-  boot.loader.grub.useOSProber = true;
+  boot.loader.systemd-boot.enable = true;
+  boot.loader.efi.canTouchEfiVariables = true;
 
   networking.hostName = "bishop"; # Define your hostname.
   # Enable networking
@@ -58,19 +46,29 @@ in
     device = "none";
     fsType = "tmpfs";
     options = [
-      "size=12G"
+      "size=100G"
       "mode=777"
     ];
   };
 
-  fileSystems."/home/b/Games/turtle-wow/WDB" = {
+  fileSystems."/tmp" = {
     device = "none";
     fsType = "tmpfs";
     options = [
-      "size=4G"
+      "size=100G"
       "mode=777"
     ];
   };
+
+
+#   fileSystems."/home/b/Games/turtle-wow/WDB" = {
+#     device = "none";
+#     fsType = "tmpfs";
+#     options = [
+#       "size=4G"
+#       "mode=777"
+#     ];
+#   };
 
   # Enable the KDE Plasma Desktop Environment.
   services.displayManager.sddm.enable = true;
@@ -129,30 +127,30 @@ in
         userEmail = "bryantdeters@gmail.com";
       };
 
-      programs.starship = {
-        enable = true;
-        enableZshIntegration = true;
-        settings = {
-          add_newline = true;
-          # hostname = {
-          #   ssh_only = false;
-          #   format = "[$ssh_symbol$hostname]($style) ";
-          #   style = "bold purple";
-          # };
-          character = {
-            success_symbol = "[➜](bold green)";
-            error_symbol = "[✗](bold red)";
-          };
-          username = {
-            show_always = true;
-            format = "[$user]($style)@";
-          };
-          directory = {
-            read_only = " 🔒";
-            truncation_symbol = "…/";
-          };
-        };
-      };
+#       programs.starship = {
+#         enable = true;
+#         enableZshIntegration = true;
+#         settings = {
+#           add_newline = true;
+#           # hostname = {
+#           #   ssh_only = false;
+#           #   format = "[$ssh_symbol$hostname]($style) ";
+#           #   style = "bold purple";
+#           # };
+#           character = {
+#             success_symbol = "[➜](bold green)";
+#             error_symbol = "[✗](bold red)";
+#           };
+#           username = {
+#             show_always = true;
+#             format = "[$user]($style)@";
+#           };
+#           directory = {
+#             read_only = " 🔒";
+#             truncation_symbol = "…/";
+#           };
+#         };
+#       };
     };
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
@@ -259,12 +257,12 @@ in
     vesktop # discord clone
     vlc
     keepassxc # password manager
-    libappimage # functionality for appimages
+#     libappimage # functionality for appimages
     polychromatic # razer lights configuration
     rustup # rust lang
-    starship # terminal prompts
-    unstable.zed-editor # editor
-    zsh
+#     starship # terminal prompts
+#     unstable.zed-editor # editor
+#     zsh
     gamescope
     openrazer-daemon # keyboard lights
     obsidian #notes
