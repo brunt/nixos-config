@@ -20,6 +20,7 @@ in
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
+  boot.kernelPackages = pkgs.linuxPackages_latest;
 
   networking.hostName = "bishop"; # Define your hostname.
   # Enable networking
@@ -262,6 +263,7 @@ in
     rustup # rust lang
 #     starship # terminal prompts
 #     unstable.zed-editor # editor
+    zed-editor # editor
 #     zsh
     gamescope
     openrazer-daemon # keyboard lights
