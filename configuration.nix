@@ -83,6 +83,24 @@ in
     ];
   };
 
+  fileSystems."/home/b/.local/share/Steam/logs" = {
+    device = "none";
+    fsType = "tmpfs";
+    options = [
+      "size=10G"
+      "mode=777"
+    ];
+  };
+
+  fileSystems."/home/b/.local/share/openrazer/logs" = {
+    device = "none";
+    fsType = "tmpfs";
+    options = [
+      "size=10G"
+      "mode=777"
+    ];
+  };
+
   # second hard drive
   # requires a chown to change from root permission
   fileSystems."/home/b/Games" = {
