@@ -55,6 +55,11 @@ in
     LC_TIME = "en_US.UTF-8";
   };
 
+  # Testing for game compatibility
+  hardware.graphics.extraPackages = with pkgs; [ amdvlk ];
+  hardware.graphics.extraPackages32 = with pkgs.driversi686Linux; [ amdvlk ];
+
+  # RAM directories
   fileSystems."/home/b/Downloads" = {
     device = "none";
     fsType = "tmpfs";
