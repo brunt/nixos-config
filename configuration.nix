@@ -84,7 +84,7 @@ in
   };
 
   # second hard drive
-  # requires a chown from root permission
+  # requires a chown to change from root permission
   fileSystems."/home/b/Games" = {
     device = "/dev/disk/by-uuid/da58d3c4-c102-45cd-aa72-381363234d5f";
     fsType = "ext4";
