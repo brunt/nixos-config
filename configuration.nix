@@ -74,24 +74,24 @@ in
   };
 
 
-#   fileSystems."/home/b/Games/turtle-wow/WDB" = {
-#     device = "none";
-#     fsType = "tmpfs";
-#     options = [
-#       "size=4G"
-#       "mode=777"
-#     ];
-#   };
+  fileSystems."/home/b/Games/turtle-wow/WDB" = {
+    device = "none";
+    fsType = "tmpfs";
+    options = [
+      "size=10G"
+      "mode=777"
+    ];
+  };
 
-  #second hard drive
+  # second hard drive
+  # requires a chown from root permission
   fileSystems."/home/b/Games" = {
     device = "/dev/disk/by-uuid/da58d3c4-c102-45cd-aa72-381363234d5f";
     fsType = "ext4";
     options = [
       "defaults"
-      "user"
-      "rw"
       "noatime"
+      "nofail"
     ];
   };
 
