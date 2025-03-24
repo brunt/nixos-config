@@ -265,6 +265,7 @@ in
     openrazer-daemon # keyboard lights
     obsidian #notes
     obs-studio
+    unstable.vulkan-tools
   ];
 
   # Terminal setup
