@@ -56,7 +56,6 @@ in
   };
 
   # Testing for game compatibility
-  hardware.graphics.enable32Bit = true;
   hardware.graphics.extraPackages = with pkgs; [ amdvlk ];
   hardware.graphics.extraPackages32 = with pkgs.driversi686Linux; [ amdvlk ];
 
@@ -291,6 +290,7 @@ in
     obsidian #notes
     obs-studio #streaming/recording
     unstable.vulkan-tools
+    lutris
   ];
 
   # Terminal setup
