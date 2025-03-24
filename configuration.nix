@@ -262,9 +262,10 @@ in
     rustup # rust lang
 #     unstable.zed-editor # this is erroring on build
     gamescope
+    dxvk
     openrazer-daemon # keyboard lights
     obsidian #notes
-    obs-studio
+    obs-studio #streaming/recording
     unstable.vulkan-tools
   ];
 
