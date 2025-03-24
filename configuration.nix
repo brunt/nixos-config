@@ -1,6 +1,18 @@
-# Edit this configuration file to define what should be installed on
-# your system.  Help is available in the configuration.nix(5) man page
-# and in the NixOS manual (accessible by running ‘nixos-help’).
+# setup steps:
+# cd ~
+# git clone git@github.com:brunt/nixos-config.git
+# sudo rm /etc/nixos/configuration.nix
+# sudo ln -s /home/b/nixos-config/configuration.nix /etc/nixos/configuration.nix
+# sudo nix-channel --add https://github.com/nix-community/home-manager/archive/master.tar.gz home-manager
+# sudo nix-channel --add https://nixos.org/channels/nixos-unstable nixos-unstable
+# sudo nix-channel --update
+# copy turtle wow folder to ~/Games
+# adjust boot loader section as necessary
+# sudo nixos-rebuild switch
+
+# notes:
+# librewolf alternative browser
+# https://www.reddit.com/r/NixOS/comments/1j0sm8q/thanks_to_nixos_and_homemanager_this_diff_was/
 
 { config, pkgs, ... }:
 let
@@ -70,6 +82,20 @@ in
 #       "mode=777"
 #     ];
 #   };
+
+  #second hard drive
+#   fileSystems."/mnt/WD500GB" = {
+#     device = "/dev/disk/by-uuid/da58d3c4-c102-45cd-aa72-381363234d5f";
+#     fsType = "ext4";
+#     options = [
+#       "defaults"
+#       "user"
+#       "rw"
+#       "noatime"
+#     ];
+#   };
+
+
 
   # Enable the KDE Plasma Desktop Environment.
   services.displayManager.sddm.enable = true;
@@ -236,7 +262,7 @@ in
 #     libappimage # functionality for appimages
     polychromatic # razer lights configuration
     rustup # rust lang
-#     unstable.zed-editor # editor
+#     unstable.zed-editor # this is erroring on build
     gamescope
     openrazer-daemon # keyboard lights
     obsidian #notes
