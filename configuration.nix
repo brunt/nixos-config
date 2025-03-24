@@ -257,7 +257,7 @@ in
     vesktop # discord clone
     vlc
     keepassxc # password manager
-#     libappimage # functionality for appimages
+    libappimage # functionality for appimages
     polychromatic # razer lights configuration
     rustup # rust lang
 #     unstable.zed-editor # this is erroring on build
