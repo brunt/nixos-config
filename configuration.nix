@@ -56,8 +56,13 @@ in
   };
 
   # Testing for game compatibility
-  hardware.graphics.extraPackages = with pkgs; [ amdvlk ];
-  hardware.graphics.extraPackages32 = with pkgs.driversi686Linux; [ amdvlk ];
+#   hardware.graphics.extraPackages = with pkgs; [ amdvlk ];
+#   hardware.graphics.extraPackages32 = with pkgs.driversi686Linux; [ amdvlk ];
+
+  hardware.graphics = {
+    enable = true;
+    enable32Bit = true;
+  };
 
   # RAM directories
   fileSystems."/home/b/Downloads" = {
@@ -280,7 +285,7 @@ in
     vesktop # discord clone
     vlc
     keepassxc # password manager
-    libappimage # functionality for appimages
+#     libappimage # functionality for appimages
     polychromatic # razer lights configuration
     rustup # rust lang
     zed-editor # this is erroring on build
