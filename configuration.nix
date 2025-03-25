@@ -283,7 +283,7 @@ in
     libappimage # functionality for appimages
     polychromatic # razer lights configuration
     rustup # rust lang
-#     unstable.zed-editor # this is erroring on build
+    zed-editor # this is erroring on build
     gamescope
     dxvk
     openrazer-daemon # keyboard lights
