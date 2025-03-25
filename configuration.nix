@@ -291,6 +291,7 @@ in
     obs-studio #streaming/recording
     unstable.vulkan-tools
     lutris
+    airshipper
   ];
 
   # Terminal setup
