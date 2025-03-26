@@ -291,6 +291,7 @@ in
     zed-editor # this is erroring on build
     gamescope
     dxvk
+    unstable.mesa
     openrazer-daemon # keyboard lights
     obsidian #notes
     obs-studio #streaming/recording
