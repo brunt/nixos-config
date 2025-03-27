@@ -288,6 +288,7 @@ in
 #     libappimage # functionality for appimages
     polychromatic # razer lights configuration
     rustup # rust lang
+    gcc
     zed-editor # this is erroring on build
     gamescope
     dxvk
