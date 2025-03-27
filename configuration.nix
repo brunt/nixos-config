@@ -291,7 +291,7 @@ in
     zed-editor # this is erroring on build
     gamescope
     dxvk
-    unstable.mesa
+    unstable.mesa # graphics library
     openrazer-daemon # keyboard lights
     obsidian #notes
     obs-studio #streaming/recording
@@ -299,6 +299,10 @@ in
     lutris
     airshipper
   ];
+
+  environment.variables = {
+    CARGO_TARGET_DIR = "/tmp";
+  };
 
   # Terminal setup
   programs.zsh = {
