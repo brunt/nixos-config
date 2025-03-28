@@ -82,6 +82,16 @@ in
     ];
   };
 
+  fileSystems."/home/b/.cargo/registry/cache" = {
+    device = "none";
+    fsType = "tmpfs";
+    options = [
+      "size=100G"
+      "mode=777"
+    ];
+  };
+
+
   fileSystems."/home/b/Games/turtle-wow/WDB" = {
     device = "none";
     fsType = "tmpfs";
