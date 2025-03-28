@@ -314,6 +314,7 @@ in
   environment.variables = {
     CARGO_TARGET_DIR = "/tmp/target";
     CROSS_CONTAINER_ENGINE = "podman";
+    PATH = "$PATH:$HOME/.cargo/bin";
   };
 
   # Terminal setup
