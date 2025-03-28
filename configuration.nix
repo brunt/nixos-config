@@ -308,7 +308,6 @@ in
     lutris
     airshipper
     jetbrains.rust-rover
-    podman #containers for cargo-cross
   ];
 
   environment.variables = {
@@ -365,6 +364,8 @@ in
     };
   };
   programs.gamemode.enable = true;
+
+  virtualisation.podman.enable = true;
   # open ports for steam stream and some games
   networking.firewall.allowedTCPPorts =
     with pkgs.lib;
