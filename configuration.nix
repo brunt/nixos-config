@@ -54,15 +54,6 @@ in
     LC_TIME = "en_US.UTF-8";
   };
 
-  # Testing for game compatibility
-  #   hardware.graphics.extraPackages = with pkgs; [ amdvlk ];
-  #   hardware.graphics.extraPackages32 = with pkgs.driversi686Linux; [ amdvlk ];
-
-  hardware.graphics = {
-    enable = true;
-    enable32Bit = true;
-  };
-
   # RAM directories
   fileSystems."/home/b/Downloads" = {
     device = "none";
@@ -365,6 +356,7 @@ in
   };
   programs.gamemode.enable = true;
 
+  # echo '{"default":[{"type":"insecureAcceptAnything"}]}' >~/.config/containers/policy.json
   virtualisation.podman.enable = true;
   # open ports for steam stream and some games
   networking.firewall.allowedTCPPorts =
