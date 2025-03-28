@@ -308,6 +308,7 @@ in
     lutris
     airshipper
     jetbrains.rust-rover
+    podman #containers for cargo-cross
   ];
 
   environment.variables = {
