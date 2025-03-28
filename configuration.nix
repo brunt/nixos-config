@@ -23,11 +23,10 @@ let
   };
 in
 {
-  imports =
-    [
-      <home-manager/nixos>
-      /etc/nixos/hardware-configuration.nix
-    ];
+  imports = [
+    <home-manager/nixos>
+    /etc/nixos/hardware-configuration.nix
+  ];
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
@@ -56,8 +55,8 @@ in
   };
 
   # Testing for game compatibility
-#   hardware.graphics.extraPackages = with pkgs; [ amdvlk ];
-#   hardware.graphics.extraPackages32 = with pkgs.driversi686Linux; [ amdvlk ];
+  #   hardware.graphics.extraPackages = with pkgs; [ amdvlk ];
+  #   hardware.graphics.extraPackages32 = with pkgs.driversi686Linux; [ amdvlk ];
 
   hardware.graphics = {
     enable = true;
@@ -82,7 +81,6 @@ in
       "mode=777"
     ];
   };
-
 
   fileSystems."/home/b/Games/turtle-wow/WDB" = {
     device = "none";
@@ -285,24 +283,25 @@ in
     vesktop # discord clone
     vlc
     keepassxc # password manager
-#     libappimage # functionality for appimages
+    #     libappimage # functionality for appimages
     polychromatic # razer lights configuration
     rustup # rust lang
     gcc
-    zed-editor # this is erroring on build
+    # unstable.zed-editor # this is erroring on build
     gamescope
     dxvk
     unstable.mesa # graphics library
     openrazer-daemon # keyboard lights
-    obsidian #notes
-    obs-studio #streaming/recording
+    obsidian # notes
+    obs-studio # streaming/recording
     unstable.vulkan-tools
     lutris
     airshipper
+    jetbrains.rust-rover
   ];
 
   environment.variables = {
-    CARGO_TARGET_DIR = "/tmp";
+    CARGO_TARGET_DIR = "/tmp/target";
   };
 
   # Terminal setup
