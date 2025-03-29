@@ -295,6 +295,7 @@ in
     unstable.mesa # graphics library
     libgudev
     wine64Packages.wayland
+    libGL
 
     openrazer-daemon # keyboard lights
     obsidian # notes
