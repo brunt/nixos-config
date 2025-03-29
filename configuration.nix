@@ -293,6 +293,8 @@ in
     gamescope
     dxvk
     unstable.mesa # graphics library
+    libgudev
+
     openrazer-daemon # keyboard lights
     obsidian # notes
     obs-studio # streaming/recording
