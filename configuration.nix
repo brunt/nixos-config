@@ -129,7 +129,7 @@ in
   services.desktopManager.plasma6.enable = true;
 
   # x11
-  # services.xserver.enable = true;
+  services.xserver.enable = true;
   # services.displayManager.defaultSession = "plasmax11";
 
   # Configure keymap in X11
@@ -282,7 +282,6 @@ in
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-    nix-ld # LD Fix
     nixd # nix language server
     nixfmt-rfc-style # official nix formatter
     alacritty # terminal emulator
