@@ -294,6 +294,8 @@ in
     dxvk
     unstable.mesa # graphics library
     libgudev
+    wine64Packages.wayland
+
 
     openrazer-daemon # keyboard lights
     obsidian # notes
