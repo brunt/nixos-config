@@ -296,7 +296,6 @@ in
     libgudev
     wine64Packages.wayland
 
-
     openrazer-daemon # keyboard lights
     obsidian # notes
     obs-studio # streaming/recording
@@ -311,6 +310,8 @@ in
     CROSS_CONTAINER_ENGINE = "podman";
     PATH = "$PATH:$HOME/.cargo/bin";
   };
+  # wayland support in electron/chromium applications
+  environment.sessionVariables.NIXOS_OZONE_WL= "1";
 
   # Terminal setup
   programs.zsh = {
