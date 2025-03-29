@@ -288,6 +288,7 @@ in
     polychromatic # razer lights configuration
     rustup # rust lang
     gcc
+    cargo-cross
     # unstable.zed-editor # this is erroring on build
     gamescope
     dxvk
