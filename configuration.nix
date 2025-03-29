@@ -36,6 +36,7 @@ in
   networking.hostName = "bishop"; # Define your hostname.
   # Enable networking
   networking.networkmanager.enable = true;
+  nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
   # Set your time zone.
   time.timeZone = "America/Chicago";
@@ -295,7 +296,7 @@ in
     unstable.mesa # graphics library
     libgudev
     wine64Packages.wayland
-    libGL
+#     libGL
 
     openrazer-daemon # keyboard lights
     obsidian # notes
