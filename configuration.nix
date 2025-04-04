@@ -31,7 +31,8 @@ in
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
-  boot.kernelPackages = pkgs.linuxPackages_latest;
+  boot.kernelPackages = pkgs.linuxPackages_6_13;
+  boot.initrd.kernelModules = [ "amdgpu" ];
 
   networking.hostName = "bishop"; # Define your hostname.
   # Enable networking
@@ -157,6 +158,13 @@ in
     #media-session.enable = true;
   };
 
+#   hardware.graphics = {
+#     enable = true;
+#     enable32Bit = true; # Optional for 32-bit applications
+#     extraPackages = with pkgs; [
+#       unstable.mesa
+#   ];
+#   };
   hardware.openrazer.enable = true;
 
   # Enable touchpad support (enabled default in most desktopManager).
