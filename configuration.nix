@@ -158,13 +158,13 @@ in
     #media-session.enable = true;
   };
 
-#   hardware.graphics = {
-#     enable = true;
-#     enable32Bit = true; # Optional for 32-bit applications
+  hardware.graphics = {
+    enable = true;
+    enable32Bit = true; # Optional for 32-bit applications
 #     extraPackages = with pkgs; [
 #       unstable.mesa
 #   ];
-#   };
+  };
   hardware.openrazer.enable = true;
 
   # Enable touchpad support (enabled default in most desktopManager).
@@ -173,7 +173,6 @@ in
   # Enable Home Manager
   home-manager.useGlobalPkgs = true;
   home-manager.useUserPackages = true;
-
   # Home Manager configuration
   home-manager.users.b =
     { pkgs, ... }:
