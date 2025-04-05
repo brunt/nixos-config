@@ -285,9 +285,6 @@ in
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
-
-  # List packages installed in system profile. To search, run:
-  # $ nix search wget
   environment.systemPackages = with pkgs; [
     nixd # nix language server
     nixfmt-rfc-style # official nix formatter
@@ -300,7 +297,6 @@ in
     rustup # rust lang
     gcc
     cargo-cross
-    # unstable.zed-editor # this is erroring on build
     gamescope
     dxvk
     unstable.mesa # graphics library
@@ -310,10 +306,12 @@ in
 
     openrazer-daemon # keyboard lights
     obsidian # notes
+    krita # paint
     obs-studio # streaming/recording
     unstable.vulkan-tools
     lutris
     airshipper
+    # unstable.zed-editor # this is erroring on build
     jetbrains.rust-rover
   ];
 
