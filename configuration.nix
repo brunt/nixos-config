@@ -215,18 +215,26 @@ in
 #     openssh.enable = true;
   };
 
-  # Enable sound with pipewire.
-  hardware.pulseaudio.enable = false;
+  systemd.services.lactd = {
+    enable = true;
+    wantedBy = [ "multi-user.target" ];
+  };
+
   security.rtkit.enable = true;
 
-  hardware.graphics = {
-    enable = true;
-    enable32Bit = true; # Optional for 32-bit applications
+  hardware = {
+    graphics = {
+      enable = true;
+      enable32Bit = true; # Optional for 32-bit applications
 #     extraPackages = with pkgs; [
 #       unstable.mesa
-#   ];
+#     ];
+    };
+
+    # Enable sound with pipewire.
+    pulseaudio.enable = false;
+    openrazer.enable = true;
   };
-  hardware.openrazer.enable = true;
 
   # Enable Home Manager
   home-manager.useGlobalPkgs = true;
@@ -374,13 +382,15 @@ in
     lact #amdgpu tool
   ];
 
-  environment.variables = {
-    CARGO_TARGET_DIR = "/tmp/target";
-    CROSS_CONTAINER_ENGINE = "podman";
-    PATH = "$PATH:$HOME/.cargo/bin";
+  environment = {
+    variables = {
+      CARGO_TARGET_DIR = "/tmp/target";
+      CROSS_CONTAINER_ENGINE = "podman";
+      PATH = "$PATH:$HOME/.cargo/bin";
+    };
+    # wayland support in electron/chromium applications
+    sessionVariables.NIXOS_OZONE_WL= "1";
   };
-  # wayland support in electron/chromium applications
-  environment.sessionVariables.NIXOS_OZONE_WL= "1";
 
   # Terminal setup
   programs.zsh = {
