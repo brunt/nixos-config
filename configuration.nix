@@ -34,10 +34,66 @@ in
   boot.kernelPackages = pkgs.linuxPackages_6_13;
   boot.initrd.kernelModules = [ "amdgpu" ];
 
-  networking.hostName = "bishop"; # Define your hostname.
-  # Enable networking
-  networking.networkmanager.enable = true;
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+
+  networking = {
+    hostName = "bishop"; # Define your hostname.
+    # Enable networking
+    networkmanager.enable = true;
+
+    # open ports for steam stream and some games
+    firewall = {
+      allowedTCPPorts =
+      with pkgs.lib;
+      [
+        27036
+        27037
+      ]
+      ++ (range 27015 27030);
+      allowedUDPPorts =
+      with pkgs.lib;
+      [
+        4380
+        27036
+      ]
+      ++ (range 27000 27031);
+      allowPing = true;
+
+      # ports for KDE Connect
+      allowedTCPPortRanges = [
+        {
+          from = 1714;
+          to = 1764;
+        }
+      ];
+      allowedUDPPortRanges = [
+        {
+          from = 1714;
+          to = 1764;
+        }
+      ];
+    };
+  };
+
+  # Some programs need SUID wrappers, can be configured further or are
+  # started in user sessions.
+  # programs.mtr.enable = true;
+  # programs.gnupg.agent = {
+  #   enable = true;
+  #   enableSSHSupport = true;
+  # };
+
+  nix = {
+    # Garbage collection of nix store
+    gc = {
+      automatic = true;
+      dates = "weekly";
+    };
+    settings = {
+      # De-duplicate nix store
+      auto-optimise-store = true;
+      experimental-features = [ "nix-command" "flakes" ];
+    };
+  };
 
   # Set your time zone.
   time.timeZone = "America/Chicago";
@@ -124,39 +180,44 @@ in
     ];
   };
 
-  # Enable the KDE Plasma Desktop Environment.
-  services.displayManager.sddm.enable = true;
-  services.displayManager.sddm.wayland.enable = true;
-  services.desktopManager.plasma6.enable = true;
+  services = {
+    # Enable the KDE Plasma Desktop Environment.
+    displayManager.sddm.enable = true;
+    displayManager.sddm.wayland.enable = true;
+    desktopManager.plasma6.enable = true;
 
-  # x11
-  services.xserver.enable = true;
-  # services.displayManager.defaultSession = "plasmax11";
+    # x11
+    xserver.enable = true;
+#     displayManager.defaultSession = "plasmax11";
 
-  # Configure keymap in X11
-  services.xserver.xkb = {
-    layout = "us";
-    variant = "";
+    # Configure keymap in X11
+    xserver.xkb = {
+      layout = "us";
+      variant = "";
+    };
+
+    # Enable CUPS to print documents.
+    printing.enable = false;
+
+    pipewire = {
+      enable = true;
+      alsa.enable = true;
+      alsa.support32Bit = true;
+      pulse.enable = true;
+      # If you want to use JACK applications, uncomment this
+      #jack.enable = true;
+
+      # use the example session manager (no others are packaged yet so this is enabled by default,
+      # no need to redefine it in your config for now)
+      #media-session.enable = true;
+    };
+
+#     openssh.enable = true;
   };
-
-  # Enable CUPS to print documents.
-  services.printing.enable = false;
 
   # Enable sound with pipewire.
   hardware.pulseaudio.enable = false;
   security.rtkit.enable = true;
-  services.pipewire = {
-    enable = true;
-    alsa.enable = true;
-    alsa.support32Bit = true;
-    pulse.enable = true;
-    # If you want to use JACK applications, uncomment this
-    #jack.enable = true;
-
-    # use the example session manager (no others are packaged yet so this is enabled by default,
-    # no need to redefine it in your config for now)
-    #media-session.enable = true;
-  };
 
   hardware.graphics = {
     enable = true;
@@ -166,9 +227,6 @@ in
 #   ];
   };
   hardware.openrazer.enable = true;
-
-  # Enable touchpad support (enabled default in most desktopManager).
-  # services.xserver.libinput.enable = true;
 
   # Enable Home Manager
   home-manager.useGlobalPkgs = true;
@@ -313,6 +371,7 @@ in
     airshipper
     # unstable.zed-editor # this is erroring on build
     jetbrains.rust-rover
+    lact #amdgpu tool
   ];
 
   environment.variables = {
@@ -355,79 +414,25 @@ in
     dedicatedServer.openFirewall = true;
     extraCompatPackages = [ pkgs.proton-ge-bin ];
     gamescopeSession.enable = true;
-    package = pkgs.steam.override {
-      extraEnv = {
+#     package = pkgs.steam.override {
+#       extraEnv = {
       #   SDL_VIDEODRIVER = "windows";
-        ENABLE_VKBASALT = 1;
+#         ENABLE_VKBASALT = 1;
       #   PROTON_HIDE_NVIDIA_GPU = 0;
       #   PROTON_ENABLE_NVAPI = 1;
       #   PROTON_ENABLE_NGX_UPDATER = 1;
-        PROTON_USE_D9VK = 1;
-        PROTON_USE_VKD3D = 1;
-        DXVK_ASYNC = 1;
+#         PROTON_USE_D9VK = 1;
+#         PROTON_USE_VKD3D = 1;
+#         DXVK_ASYNC = 1;
       #   __GL_VRR_ALLOWED = 1;
-        PROTON_NO_ESYNC = 1;
-      };
-    };
+#         PROTON_NO_ESYNC = 1;
+#       };
+#     };
   };
   programs.gamemode.enable = true;
 
   # echo '{"default":[{"type":"insecureAcceptAnything"}]}' >~/.config/containers/policy.json
   virtualisation.podman.enable = true;
-  # open ports for steam stream and some games
-  networking.firewall.allowedTCPPorts =
-    with pkgs.lib;
-    [
-      27036
-      27037
-    ]
-    ++ (range 27015 27030);
-  networking.firewall.allowedUDPPorts =
-    with pkgs.lib;
-    [
-      4380
-      27036
-    ]
-    ++ (range 27000 27031);
-  networking.firewall.allowPing = true;
-
-  # Some programs need SUID wrappers, can be configured further or are
-  # started in user sessions.
-  # programs.mtr.enable = true;
-  # programs.gnupg.agent = {
-  #   enable = true;
-  #   enableSSHSupport = true;
-  # };
-
-  # List services that you want to enable:
-
-  # Enable the OpenSSH daemon.
-  # services.openssh.enable = true;
-
-  # Open ports in the firewall.
-  networking.firewall = {
-    # ports for KDE Connect
-    allowedTCPPortRanges = [
-      {
-        from = 1714;
-        to = 1764;
-      }
-    ];
-    allowedUDPPortRanges = [
-      {
-        from = 1714;
-        to = 1764;
-      }
-    ];
-  };
-
-  # Garbage collection of nix store
-  nix.gc = {
-    automatic = true;
-    dates = "weekly";
-  };
-  # De-duplicate nix store
-  nix.settings.auto-optimise-store = true;
 
   # Auto updates
   system.autoUpgrade = {
