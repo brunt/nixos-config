@@ -380,6 +380,7 @@ in
     # unstable.zed-editor # this is erroring on build
     jetbrains.rust-rover
     lact #amdgpu tool
+    gnumake
   ];
 
   environment = {
