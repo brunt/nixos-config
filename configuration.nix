@@ -381,6 +381,7 @@ in
     jetbrains.rust-rover
     lact #amdgpu tool
     gnumake
+    insomnia
   ];
 
   environment = {
