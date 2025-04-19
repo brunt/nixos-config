@@ -369,7 +369,6 @@ in
     libgudev
     wine64Packages.wayland
 #     libGL
-
     openrazer-daemon # keyboard lights
     obsidian # notes
     krita # paint
@@ -413,11 +412,14 @@ in
   };
 
   # LD Fix
-  programs.nix-ld.enable = true;
-  programs.nix-ld.libraries = with pkgs; [
-    # add any missing dynamic libraries for unpackaged programs
+  programs.nix-ld = {
+    enable = true;
+    #add any missing dynamic libraries for unpackaged programs
     # here, NOT in environment.systemPackages
-  ];
+    libraries = with pkgs; [
+      libGL
+    ];
+  };
 
   # Steam
   programs.steam = {
