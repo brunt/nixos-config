@@ -159,6 +159,15 @@ in
     ];
   };
 
+  fileSystems."/var/lib/systemd/coredump" = {
+    device = "none";
+    fsType = "tmpfs";
+    options = [
+      "size=10G"
+      "mode=777"
+    ];
+  };
+
   fileSystems."/home/b/.local/share/openrazer/logs" = {
     device = "none";
     fsType = "tmpfs";
@@ -417,7 +426,7 @@ in
     #add any missing dynamic libraries for unpackaged programs
     # here, NOT in environment.systemPackages
     libraries = with pkgs; [
-      libGL
+#       libGL
     ];
   };
 
