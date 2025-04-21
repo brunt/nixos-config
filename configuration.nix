@@ -248,7 +248,6 @@ in
   # Enable Home Manager
   home-manager.useGlobalPkgs = true;
   home-manager.useUserPackages = true;
-  # Home Manager configuration
   home-manager.users.b =
     { pkgs, ... }:
     {
@@ -377,7 +376,6 @@ in
     unstable.mesa # graphics library
     libgudev
     wine64Packages.wayland
-#     libGL
     openrazer-daemon # keyboard lights
     obsidian # notes
     krita # paint
@@ -390,6 +388,7 @@ in
     lact #amdgpu tool
     gnumake
     insomnia
+    protonup
   ];
 
   environment = {
