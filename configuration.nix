@@ -364,6 +364,7 @@ in
     nixfmt-rfc-style # official nix formatter
     alacritty # terminal emulator
     vesktop # discord clone
+    unstable.revolt-desktop
     vlc
     keepassxc # password manager
     #     libappimage # functionality for appimages
