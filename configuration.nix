@@ -427,6 +427,7 @@ in
     #add any missing dynamic libraries for unpackaged programs
     # here, NOT in environment.systemPackages
     libraries = with pkgs; [
+      pkgs.lld
 #       libGL
     ];
   };
