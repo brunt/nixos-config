@@ -370,6 +370,7 @@ in
     #     libappimage # functionality for appimages
     polychromatic # razer lights configuration
     rustup # rust lang
+    unstable.trunk # rust yew
     gcc
     cargo-cross
     gamescope
