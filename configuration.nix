@@ -370,7 +370,6 @@ in
     #     libappimage # functionality for appimages
     polychromatic # razer lights configuration
     rustup # rust lang
-    unstable.trunk # rust yew
     gcc
     cargo-cross
     gamescope
@@ -427,8 +426,7 @@ in
     #add any missing dynamic libraries for unpackaged programs
     # here, NOT in environment.systemPackages
     libraries = with pkgs; [
-      pkgs.lld
-#       libGL
+#       pkgs.lld
     ];
   };
 
@@ -441,15 +439,15 @@ in
     gamescopeSession.enable = true;
 #     package = pkgs.steam.override {
 #       extraEnv = {
-      #   SDL_VIDEODRIVER = "windows";
+#         SDL_VIDEODRIVER = "windows";
 #         ENABLE_VKBASALT = 1;
-      #   PROTON_HIDE_NVIDIA_GPU = 0;
-      #   PROTON_ENABLE_NVAPI = 1;
-      #   PROTON_ENABLE_NGX_UPDATER = 1;
+#         PROTON_HIDE_NVIDIA_GPU = 0;
+#         PROTON_ENABLE_NVAPI = 1;
+#         PROTON_ENABLE_NGX_UPDATER = 1;
 #         PROTON_USE_D9VK = 1;
 #         PROTON_USE_VKD3D = 1;
 #         DXVK_ASYNC = 1;
-      #   __GL_VRR_ALLOWED = 1;
+#         __GL_VRR_ALLOWED = 1;
 #         PROTON_NO_ESYNC = 1;
 #       };
 #     };
