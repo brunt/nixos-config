@@ -390,6 +390,7 @@ in
     gnumake
     insomnia
     protonup
+    stellarium
   ];
 
   environment = {
