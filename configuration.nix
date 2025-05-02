@@ -31,7 +31,7 @@ in
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
-  boot.kernelPackages = pkgs.linuxPackages_6_13;
+  boot.kernelPackages = pkgs.linuxPackages_latest;
   boot.initrd.kernelModules = [ "amdgpu" ];
 
 
@@ -242,7 +242,7 @@ in
 
     # Enable sound with pipewire.
     pulseaudio.enable = false;
-    openrazer.enable = true;
+#     openrazer.enable = true;
   };
 
   # Enable Home Manager
@@ -273,7 +273,7 @@ in
     extraGroups = [
       "networkmanager"
       "wheel"
-      "openrazer"
+#       "openrazer"
     ];
     packages = with pkgs; [
       kdePackages.kdeconnect-kde # phone integration
@@ -368,7 +368,7 @@ in
     vlc
     keepassxc # password manager
     #     libappimage # functionality for appimages
-    polychromatic # razer lights configuration
+#     polychromatic # razer lights configuration
     rustup # rust lang
     gcc
     cargo-cross
@@ -377,7 +377,7 @@ in
     unstable.mesa # graphics library
     libgudev
     wine64Packages.wayland
-    openrazer-daemon # keyboard lights
+#     openrazer-daemon # keyboard lights
     obsidian # notes
     krita # paint
     obs-studio # streaming/recording
