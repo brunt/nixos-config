@@ -368,16 +368,17 @@ in
     vlc
     keepassxc # password manager
     #     libappimage # functionality for appimages
-#     polychromatic # razer lights configuration
+#     unstable.polychromatic # razer lights configuration
     rustup # rust lang
     gcc
     cargo-cross
     gamescope
     dxvk
+    unstable.amdvlk
     unstable.mesa # graphics library
     libgudev
     wine64Packages.wayland
-#     openrazer-daemon # keyboard lights
+#     unstable.openrazer-daemon # keyboard lights # build errors on 6.14 kernel
     obsidian # notes
     krita # paint
     obs-studio # streaming/recording
