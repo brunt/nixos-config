@@ -386,12 +386,13 @@ in
     lutris
     airshipper
     # unstable.zed-editor # this is erroring on build
-    jetbrains.rust-rover
+    unstable.jetbrains.rust-rover
     lact #amdgpu tool
     gnumake
     insomnia
     protonup
     stellarium
+    unrar # extract from rar files
   ];
 
   environment = {
