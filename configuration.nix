@@ -378,6 +378,7 @@ in
     unstable.mesa # graphics library
     libgudev
     wine64Packages.wayland
+    wine
 #     unstable.openrazer-daemon # keyboard lights # build errors on 6.14 kernel
     obsidian # notes
     krita # paint
