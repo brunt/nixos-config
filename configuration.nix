@@ -235,9 +235,9 @@ in
     graphics = {
       enable = true;
       enable32Bit = true; # Optional for 32-bit applications
-    extraPackages = with pkgs; [
-      amdvlk
-    ];
+      extraPackages = with pkgs; [
+        unstable.amdvlk
+      ];
     };
 
     # Enable sound with pipewire.
