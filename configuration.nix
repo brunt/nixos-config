@@ -394,6 +394,7 @@ in
     protonup
     stellarium
     unrar # extract from rar files
+    fuse3 #for appimages
   ];
 
   environment = {
