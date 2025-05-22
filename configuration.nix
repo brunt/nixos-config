@@ -395,8 +395,6 @@ in
     protonup
     stellarium
     unrar # extract from rar files
-    fuse3 #for appimages
-    fuse
   ];
 
   environment = {
@@ -433,6 +431,7 @@ in
     #add any missing dynamic libraries for unpackaged programs
     # here, NOT in environment.systemPackages
     libraries = with pkgs; [
+        fuse3
 #       pkgs.lld
     ];
   };
