@@ -87,6 +87,7 @@ in
     gc = {
       automatic = true;
       dates = "weekly";
+      options = "--delete-older-than +10";
     };
     settings = {
       # De-duplicate nix store
@@ -395,6 +396,7 @@ in
     stellarium
     unrar # extract from rar files
     fuse3 #for appimages
+    fuse
   ];
 
   environment = {
