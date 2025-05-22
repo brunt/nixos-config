@@ -367,7 +367,7 @@ in
     unstable.revolt-desktop
     vlc
     keepassxc # password manager
-    #     libappimage # functionality for appimages
+    libappimage # functionality for appimages
 #     unstable.polychromatic # razer lights configuration
     rustup # rust lang
     gcc
