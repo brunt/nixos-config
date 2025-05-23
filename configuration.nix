@@ -477,6 +477,10 @@ in
     };
 
     gamemode.enable = true;
+
+    appimage = {
+      enable = true;
+    };
   };
 
   # echo '{"default":[{"type":"insecureAcceptAnything"}]}' >~/.config/containers/policy.json
