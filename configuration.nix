@@ -247,9 +247,10 @@ in
 #     };
 
     amdgpu.amdvlk = {
-      enable = true;
+#       enable = true;
       support32Bit.enable = true;
       supportExperimental.enable = true;
+      package = unstable.amdvlk;
     };
 
     # Enable sound with pipewire.
