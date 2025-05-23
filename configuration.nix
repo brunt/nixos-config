@@ -322,6 +322,7 @@ in
     unstable.revolt-desktop
     vlc
     keepassxc # password manager
+    appimage-run
     libappimage # functionality for appimages
 #     unstable.polychromatic # razer lights configuration
     rustup # rust lang
