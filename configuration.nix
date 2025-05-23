@@ -229,9 +229,13 @@ in
 #     openssh.enable = true;
   };
 
-  systemd.services.lactd = {
-    enable = true;
-    wantedBy = [ "multi-user.target" ];
+  systemd = {
+    services.lactd = {
+      enable = true;
+      wantedBy = [ "multi-user.target" ];
+    };
+
+    packages = with pkgs; [ lact ];
   };
 
   security.rtkit.enable = true;
