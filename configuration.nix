@@ -237,14 +237,14 @@ in
   security.rtkit.enable = true;
 
   hardware = {
-    graphics = {
-      enable = true; # radv
-      enable32Bit = true; # Optional for 32-bit applications
+#     graphics = {
+#       enable = true; # radv
+#       enable32Bit = true; # Optional for 32-bit applications
 #       extraPackages = with pkgs; [
 #         unstable.amdvlk
 #       ];
 #       extraPackages32 = [ pkgs.driversi686Linux.amdvlk ];
-    };
+#     };
 
     amdgpu.amdvlk = {
       enable = true;
