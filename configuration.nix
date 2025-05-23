@@ -238,12 +238,18 @@ in
 
   hardware = {
     graphics = {
-      enable = true;
+      enable = true; # radv
       enable32Bit = true; # Optional for 32-bit applications
-      extraPackages = with pkgs; [
-        unstable.amdvlk
-      ];
-      extraPackages32 = [ pkgs.driversi686Linux.amdvlk ];
+#       extraPackages = with pkgs; [
+#         unstable.amdvlk
+#       ];
+#       extraPackages32 = [ pkgs.driversi686Linux.amdvlk ];
+    };
+
+    amdgpu.amdvlk = {
+      enable = true;
+      support32Bit.enable = true;
+      supportExperimental.enable = true;
     };
 
     # Enable sound with pipewire.
