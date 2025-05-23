@@ -142,7 +142,7 @@ in
   };
 
 
-  fileSystems."/home/b/Games/turtle-wow/WDB" = {
+  fileSystems."/home/b/Games/turtlewow/drive_c/Program Files (x86)/TurtleWoW/WDB" = {
     device = "none";
     fsType = "tmpfs";
     options = [
