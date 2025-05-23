@@ -200,6 +200,10 @@ in
     xserver.enable = true;
 #     displayManager.defaultSession = "plasmax11";
 
+    # GNOME
+#     xserver.displayManager.gdm.enable = true;
+#     xserver.desktopManager.gnome.enable = true;
+
     # Configure keymap in X11
     xserver.xkb = {
       layout = "us";
@@ -239,6 +243,7 @@ in
       extraPackages = with pkgs; [
         unstable.amdvlk
       ];
+      extraPackages32 = [ pkgs.driversi686Linux.amdvlk ];
     };
 
     # Enable sound with pipewire.
@@ -296,68 +301,6 @@ in
   };
   users.defaultUserShell = pkgs.zsh;
 
-  programs.firefox = {
-    enable = true;
-    preferences = {
-      #about:config stuff
-      "browser.cache.disk_cache_ssl" = false;
-      "browser.cache.disk.enable" = false;
-      "browser.cache.memory.enable" = true;
-      "extensions.pocket.enabled" = false;
-    };
-
-    # Check about:policies#documentation for options.
-    policies = {
-      DisableTelemetry = true;
-      DisableFirefoxStudies = true;
-      EnableTrackingProtection = {
-        Value = true;
-        Locked = true;
-        Cryptomining = true;
-        Fingerprinting = true;
-      };
-      DisablePocket = true;
-      DisableFirefoxAccounts = true;
-      DisableAccounts = true;
-      DisableFirefoxScreenshots = true;
-      OverrideFirstRunPage = "";
-      OverridePostUpdatePage = "";
-      DontCheckDefaultBrowser = true;
-      DisplayBookmarksToolbar = "never"; # alternatives: "always" or "newtab"
-      DisplayMenuBar = "default-off"; # alternatives: "always", "never" or "default-on"
-      SearchBar = "unified"; # alternative: "separate"
-
-      # ---- EXTENSIONS ----
-      # Check about:support for extension/add-on ID strings.
-      # Valid strings for installation_mode are "allowed", "blocked",
-      # "force_installed" and "normal_installed".
-      ExtensionSettings = {
-        "*".installation_mode = "blocked"; # blocks all addons except the ones specified below
-        # uBlock Origin:
-        "uBlock0@raymondhill.net" = {
-          install_url = "https://addons.mozilla.org/firefox/downloads/latest/ublock-origin/latest.xpi";
-          installation_mode = "force_installed";
-        };
-        # Privacy Badger:
-        "jid1-MnnxcxisBPnSXQ@jetpack" = {
-          install_url = "https://addons.mozilla.org/firefox/downloads/latest/privacy-badger17/latest.xpi";
-          installation_mode = "force_installed";
-        };
-
-        # VivalidFox:
-        "@vivaldi-fox" = {
-          install_url = "https://addons.mozilla.org/firefox/downloads/file/4023673/vivaldifox-3.6.xpi";
-          installation_mode = "force_installed";
-        };
-        # Facebook Container:
-        "@contain-facebook" = {
-          install_url = "https://addons.mozilla.org/firefox/downloads/file/4141092/facebook_container-2.3.11.xpi";
-          installation_mode = "force_installed";
-        };
-      };
-    };
-  };
-
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
   environment.systemPackages = with pkgs; [
@@ -407,42 +350,104 @@ in
     sessionVariables.NIXOS_OZONE_WL= "1";
   };
 
-  # Terminal setup
-  programs.zsh = {
-    enable = true;
-    enableCompletion = true;
-
-    shellAliases = {
-      rollback = "sudo nixos-rebuild --rollback";
-    };
-    ohMyZsh = {
+  programs = {
+    firefox = {
       enable = true;
-      theme = "robbyrussell";
-      plugins = [
-        "git"
-        "sudo"
-      ];
-    };
-  };
+      preferences = {
+        #about:config stuff
+        "browser.cache.disk_cache_ssl" = false;
+        "browser.cache.disk.enable" = false;
+        "browser.cache.memory.enable" = true;
+        "extensions.pocket.enabled" = false;
+      };
 
-  # LD Fix
-  programs.nix-ld = {
-    enable = true;
-    #add any missing dynamic libraries for unpackaged programs
-    # here, NOT in environment.systemPackages
-    libraries = with pkgs; [
+    # Check about:policies#documentation for options.
+      policies = {
+        DisableTelemetry = true;
+        DisableFirefoxStudies = true;
+        EnableTrackingProtection = {
+          Value = true;
+          Locked = true;
+          Cryptomining = true;
+          Fingerprinting = true;
+        };
+        DisablePocket = true;
+        DisableFirefoxAccounts = true;
+        DisableAccounts = true;
+        DisableFirefoxScreenshots = true;
+        OverrideFirstRunPage = "";
+        OverridePostUpdatePage = "";
+        DontCheckDefaultBrowser = true;
+        DisplayBookmarksToolbar = "never"; # alternatives: "always" or "newtab"
+        DisplayMenuBar = "default-off"; # alternatives: "always", "never" or "default-on"
+        SearchBar = "unified"; # alternative: "separate"
+
+        # ---- EXTENSIONS ----
+        # Check about:support for extension/add-on ID strings.
+        # Valid strings for installation_mode are "allowed", "blocked",
+        # "force_installed" and "normal_installed".
+        ExtensionSettings = {
+          "*".installation_mode = "blocked"; # blocks all addons except the ones specified below
+          # uBlock Origin:
+          "uBlock0@raymondhill.net" = {
+            install_url = "https://addons.mozilla.org/firefox/downloads/latest/ublock-origin/latest.xpi";
+            installation_mode = "force_installed";
+          };
+          # Privacy Badger:
+          "jid1-MnnxcxisBPnSXQ@jetpack" = {
+            install_url = "https://addons.mozilla.org/firefox/downloads/latest/privacy-badger17/latest.xpi";
+            installation_mode = "force_installed";
+          };
+
+          # VivalidFox:
+          "@vivaldi-fox" = {
+            install_url = "https://addons.mozilla.org/firefox/downloads/file/4023673/ vivaldifox-3.6.xpi";
+            installation_mode = "force_installed";
+          };
+          # Facebook Container:
+          "@contain-facebook" = {
+            install_url = "https://addons.mozilla.org/firefox/downloads/file/4141092/facebook_container-2.3.11.xpi";
+            installation_mode = "force_installed";
+          };
+        };
+      };
+    };
+
+    zsh = {
+      enable = true;
+      enableCompletion = true;
+
+      shellAliases = {
+        rollback = "sudo nixos-rebuild --rollback";
+      };
+      ohMyZsh = {
+        enable = true;
+        theme = "robbyrussell";
+        plugins = [
+          "git"
+          "sudo"
+        ];
+      };
+    };
+
+    # LD Fix
+    nix-ld = {
+      enable = true;
+      #add any missing dynamic libraries for unpackaged programs
+      # here, NOT in environment.systemPackages
+      libraries = with pkgs; [
         fuse3
 #       pkgs.lld
-    ];
-  };
+      ];
+    };
 
-  # Steam
-  programs.steam = {
-    enable = true;
-    remotePlay.openFirewall = true;
-    dedicatedServer.openFirewall = true;
-    extraCompatPackages = [ pkgs.proton-ge-bin ];
-    gamescopeSession.enable = true;
+
+    steam = {
+      enable = true;
+      remotePlay.openFirewall = true;
+      dedicatedServer.openFirewall = true;
+      extraCompatPackages = with pkgs; [ proton-ge-bin ];
+      gamescopeSession.enable = true;
 #     package = pkgs.steam.override {
 #       extraEnv = {
 #         SDL_VIDEODRIVER = "windows";
@@ -457,8 +462,10 @@ in
 #         PROTON_NO_ESYNC = 1;
 #       };
 #     };
+    };
+
+    gamemode.enable = true;
   };
-  programs.gamemode.enable = true;
 
   # echo '{"default":[{"type":"insecureAcceptAnything"}]}' >~/.config/containers/policy.json
   virtualisation.podman.enable = true;
