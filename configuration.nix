@@ -5,6 +5,7 @@
 # sudo ln -s /home/b/nixos-config/configuration.nix /etc/nixos/configuration.nix
 # sudo nix-channel --add https://github.com/nix-community/home-manager/archive/master.tar.gz home-manager
 # sudo nix-channel --add https://nixos.org/channels/nixos-unstable nixos-unstable
+# sudo nix-channel --add https://nixos.org/channels/nixos-25.05 nixos
 # sudo nix-channel --update
 # copy turtle wow folder to ~/Games
 # adjust boot loader section as necessary
@@ -336,6 +337,7 @@ in
     wine64Packages.wayland
     wine
 #     unstable.openrazer-daemon # keyboard lights # build errors on 6.14 kernel
+    rivalcfg # steelseries mouse
     obsidian # notes
     krita # paint
     obs-studio # streaming/recording
