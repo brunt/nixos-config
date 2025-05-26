@@ -227,6 +227,10 @@ in
       #media-session.enable = true;
     };
 
+
+    # Enable sound with pipewire.
+    pulseaudio.enable = false;
+
 #     openssh.enable = true;
   };
 
@@ -258,8 +262,6 @@ in
       package = unstable.amdvlk;
     };
 
-    # Enable sound with pipewire.
-    pulseaudio.enable = false;
 #     openrazer.enable = true;
   };
 
@@ -424,7 +426,7 @@ in
             installation_mode = "force_installed";
           };
           # Sponsor Block:
-          "sponsorblock" = {
+          "sponsorBlockerBETA@ajay.app" = {
             install_url = "https://addons.mozilla.org/firefox/downloads/file/4480833/sponsorblock-5.12.1.xpi";
             installation_mode = "force_installed";
           };
