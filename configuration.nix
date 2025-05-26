@@ -424,7 +424,7 @@ in
             installation_mode = "force_installed";
           };
           # Sponsor Block:
-          "sponsorblock@sponsor.ajay.app" = {
+          "sponsorblock" = {
             install_url = "https://addons.mozilla.org/firefox/downloads/file/4480833/sponsorblock-5.12.1.xpi";
             installation_mode = "force_installed";
           };
