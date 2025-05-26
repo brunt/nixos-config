@@ -423,6 +423,11 @@ in
             install_url = "https://addons.mozilla.org/firefox/downloads/file/4141092/facebook_container-2.3.11.xpi";
             installation_mode = "force_installed";
           };
+          # Sponsor Block:
+          "sponsorblock@sponsor.ajay.app" = {
+            install_url = "https://addons.mozilla.org/firefox/downloads/file/4480833/sponsorblock-5.12.1.xpi";
+            installation_mode = "force_installed";
+          };
         };
       };
     };
@@ -454,7 +459,6 @@ in
 #       pkgs.lld
       ];
     };
-
 
     steam = {
       enable = true;
