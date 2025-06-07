@@ -328,7 +328,7 @@ in
     appimage-run
     libappimage # functionality for appimages
 #     unstable.polychromatic # razer lights configuration
-    rustup # rust lang
+    unstable.rustup # rust lang
     gcc
     cargo-cross
     gamescope
