@@ -354,6 +354,7 @@ in
     protonup
     stellarium
     unrar # extract from rar files
+    ungoogled-chromium # firefox is too buggy sometimes
   ];
 
   environment = {
@@ -426,7 +427,7 @@ in
             installation_mode = "force_installed";
           };
           # Sponsor Block:
-          "sponsorBlockerBETA@ajay.app" = {
+          "	sponsorBlocker@ajay.app" = {
             install_url = "https://addons.mozilla.org/firefox/downloads/file/4480833/sponsorblock-5.12.1.xpi";
             installation_mode = "force_installed";
           };
