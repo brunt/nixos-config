@@ -354,7 +354,6 @@ in
     protonup
     stellarium
     unrar # extract from rar files
-    ungoogled-chromium # firefox is too buggy sometimes
   ];
 
   environment = {
