@@ -329,8 +329,9 @@ in
     libappimage # functionality for appimages
 #     unstable.polychromatic # razer lights configuration
     unstable.rustup # rust lang
+    unstable.cargo
+    unstable.rustc
     gcc
-    cargo-cross
     gamescope
     dxvk
     unstable.amdvlk
