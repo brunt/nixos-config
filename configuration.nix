@@ -293,7 +293,7 @@ in
     extraGroups = [
       "networkmanager"
       "wheel"
-#       "openrazer"
+      "openrazer"
     ];
     packages = with pkgs; [
       kdePackages.kdeconnect-kde # phone integration
@@ -327,7 +327,7 @@ in
     keepassxc # password manager
     appimage-run
     libappimage # functionality for appimages
-#     unstable.polychromatic # razer lights configuration
+    unstable.polychromatic # razer lights configuration
     gcc
     gamescope
     dxvk
@@ -336,7 +336,7 @@ in
     libgudev
     wine64Packages.wayland
     wine
-#     unstable.openrazer-daemon # keyboard lights # build errors on 6.14 kernel
+    unstable.openrazer-daemon # keyboard lights # build errors on 6.14 kernel
     rivalcfg # steelseries mouse
     obsidian # notes
     krita # paint
