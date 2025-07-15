@@ -336,6 +336,7 @@ in
     libgudev
     wine64Packages.wayland
     wine
+    linuxKernel.packages.linux_6_14.openrazer
     unstable.openrazer-daemon # keyboard lights # build errors on 6.14 kernel
     rivalcfg # steelseries mouse
     obsidian # notes
