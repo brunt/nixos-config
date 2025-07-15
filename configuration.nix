@@ -345,7 +345,7 @@ in
     lutris
     airshipper
     # unstable.zed-editor # this is erroring on build
-    unstable.jetbrains.rust-rover
+    jetbrains.rust-rover
     lact #amdgpu tool
     gnumake
     insomnia
