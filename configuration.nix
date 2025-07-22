@@ -360,7 +360,6 @@ in
     gnumake
     insomnia
     protonup
-    stellarium
     unrar # extract from rar files
   ];
 
