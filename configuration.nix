@@ -369,6 +369,11 @@ in
       CARGO_TARGET_DIR = "/tmp/target";
       CROSS_CONTAINER_ENGINE = "podman";
       PATH = "$PATH:$HOME/.cargo/bin";
+
+      #pinyin input vars
+      GTK_IM_MODULE = "fcitx";
+      QT_IM_MODULE = "fcitx";
+      XMODIFIERS = "@im=fcitx";
     };
     # wayland support in electron/chromium applications
     sessionVariables.NIXOS_OZONE_WL= "1";
