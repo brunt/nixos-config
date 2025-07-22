@@ -371,8 +371,6 @@ in
       PATH = "$PATH:$HOME/.cargo/bin";
 
       #pinyin input vars
-      GTK_IM_MODULE = "fcitx";
-      QT_IM_MODULE = "fcitx";
       XMODIFIERS = "@im=fcitx";
     };
     # wayland support in electron/chromium applications
