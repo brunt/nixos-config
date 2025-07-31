@@ -264,14 +264,14 @@ in
 #       extraPackages32 = [ pkgs.driversi686Linux.amdvlk ];
 #     };
 
+#     openrazer.enable = true;
+
     amdgpu.amdvlk = {
 #       enable = true;
       support32Bit.enable = true;
       supportExperimental.enable = true;
       package = unstable.amdvlk;
     };
-
-#     openrazer.enable = true;
   };
 
   # Enable Home Manager
@@ -302,7 +302,7 @@ in
     extraGroups = [
       "networkmanager"
       "wheel"
-      "openrazer"
+#       "openrazer"
     ];
     packages = with pkgs; [
       kdePackages.kdeconnect-kde # phone integration
@@ -336,7 +336,6 @@ in
     keepassxc # password manager
     appimage-run
     libappimage # functionality for appimages
-    unstable.polychromatic # razer lights configuration
     gcc
     gamescope
     dxvk
@@ -345,8 +344,8 @@ in
     libgudev
     wine64Packages.wayland
     wine
-#     unstable.openrazer
-    unstable.openrazer-daemon # keyboard lights # build errors on 6.14 kernel
+#     unstable.openrazer-daemon
+#     unstable.polychromatic # razer lights configuration
     rivalcfg # steelseries mouse
     obsidian # notes
     krita # paint
