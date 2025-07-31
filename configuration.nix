@@ -345,7 +345,7 @@ in
     libgudev
     wine64Packages.wayland
     wine
-    linuxKernel.packages.linux_6_14.openrazer
+#     unstable.openrazer
     unstable.openrazer-daemon # keyboard lights # build errors on 6.14 kernel
     rivalcfg # steelseries mouse
     obsidian # notes
@@ -361,6 +361,7 @@ in
     insomnia
     protonup
     unrar # extract from rar files
+    anki #flashcards
   ];
 
   environment = {
