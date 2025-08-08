@@ -353,7 +353,7 @@ in
     unstable.vulkan-tools
     lutris
     airshipper
-    # unstable.zed-editor # this is erroring on build
+    unstable.zed-editor
     jetbrains.rust-rover
     lact #amdgpu tool
     gnumake
