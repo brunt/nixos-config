@@ -361,6 +361,7 @@ in
     protonup
     unrar # extract from rar files
     anki #flashcards
+    ollama # local LLMs
   ];
 
   environment = {
