@@ -255,6 +255,7 @@ in
   security.rtkit.enable = true;
 
   hardware = {
+    bluetooth.enable = true;
 #     graphics = {
 #       enable = true; # radv
 #       enable32Bit = true; # Optional for 32-bit applications
@@ -265,7 +266,6 @@ in
 #     };
 
 #     openrazer.enable = true;
-
     amdgpu.amdvlk = {
 #       enable = true;
       support32Bit.enable = true;
